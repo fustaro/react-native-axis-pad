@@ -54,7 +54,8 @@
   },
   "homepage": "https://github.com/fustaro/fustaro-react-native-axis-pad#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "private": false,
   "devDependencies": {
@@ -115,8 +116,7 @@
       "tagName": "v${version}"
     },
     "npm": {
-      "publish": true,
-      "access": "public"
+      "publish": true
     },
     "github": {
       "release": true
