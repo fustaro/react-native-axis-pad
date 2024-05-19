@@ -77,7 +77,7 @@
     "prettier": "^2.0.5",
     "react": "18.2.0",
     "react-native": "0.73.6",
-    "react-native-builder-bob": "^0.20.0",
+    "react-native-builder-bob": "^0.23.2",
     "react-native-gesture-handler": "^2.16.2",
     "react-test-renderer": "^18.1.0",
     "release-it": "^15.0.0",
@@ -172,6 +172,8 @@
     "source": "src",
     "output": "lib",
     "targets": [
+      "commonjs",
+      "module",
       [
         "typescript",
         {

@@ -1,4 +1,5 @@
-import { PropsWithChildren, ReactElement, useEffect, useRef, useState } from "react";
+import React from "react";
+import type { PropsWithChildren, ReactElement } from "react";
 import { Animated, Easing, ViewStyle, StyleSheet, View, StatusBar, Dimensions } from "react-native";
 import {
     GestureEvent,
@@ -152,21 +153,24 @@ const defaultControlSize = 100;
 const useNativeDriver = true;
 
 export function AxisPad(props: PropsWithChildren<AxisPadProps>): ReactElement {
-    const [visualSnapPadToTouchOffset, setVisualSnapPadToTouchOffset] = useState({ x: 0, y: 0 });
-    const [startPositionRelativeToPadCenter, setStartPositionRelativeToPadCenter] = useState({
+    const [visualSnapPadToTouchOffset, setVisualSnapPadToTouchOffset] = React.useState({
         x: 0,
         y: 0,
     });
-    const [padLayoutData, setPadLayoutData] = useState({ width: 0, height: 0, y: 0, x: 0 });
-    const [statusBarOffset, setStatusBarOffset] = useState(0);
-    const [touchEventHandlerTag, setTouchEventHandlerTag] = useState(0);
+    const [startPositionRelativeToPadCenter, setStartPositionRelativeToPadCenter] = React.useState({
+        x: 0,
+        y: 0,
+    });
+    const [padLayoutData, setPadLayoutData] = React.useState({ width: 0, height: 0, y: 0, x: 0 });
+    const [statusBarOffset, setStatusBarOffset] = React.useState(0);
+    const [touchEventHandlerTag, setTouchEventHandlerTag] = React.useState(0);
     const [controlPositionRelativeToPadCenter, setControlPositionRelativeToPadCenter] =
-        useState<InternalTouchEvent>({ x: 0, y: 0, eventType: "setup" });
+        React.useState<InternalTouchEvent>({ x: 0, y: 0, eventType: "setup" });
 
-    const padPositionAnimation = useRef(new Animated.ValueXY());
-    const controlPositionAnimation = useRef(new Animated.ValueXY());
+    const padPositionAnimation = React.useRef(new Animated.ValueXY());
+    const controlPositionAnimation = React.useRef(new Animated.ValueXY());
 
-    const padViewRef = useRef<View>(null);
+    const padViewRef = React.useRef<View>(null);
 
     const padSize = props.size || defaultPadSize;
     const controlSize = props.controlSize || defaultControlSize;
@@ -181,7 +185,7 @@ export function AxisPad(props: PropsWithChildren<AxisPadProps>): ReactElement {
         ? padSize / 2 - controlSize / 2
         : padSize / 2;
 
-    useEffect(() => {
+    React.useEffect(() => {
         const initialX =
             !props.disableX && props.initialX ? props.initialX * controlBoundRadius : 0;
         const initialY =
@@ -195,7 +199,7 @@ export function AxisPad(props: PropsWithChildren<AxisPadProps>): ReactElement {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.initialX, props.initialY, controlBoundRadius]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (controlPositionRelativeToPadCenter.eventType !== "setup") {
             props.onTouchEvent?.({
                 ratio: {
@@ -244,7 +248,7 @@ export function AxisPad(props: PropsWithChildren<AxisPadProps>): ReactElement {
         });
     };
 
-    useEffect(() => {
+    React.useEffect(() => {
         // if the actual size of the pad doesn't change then onLayout isn't called, meaning
         // offsets are wrong if screen orientation changes.
         // it would be lovely if the gesture handler relative positions worked properly with multi-touch, but for now
@@ -259,12 +263,12 @@ export function AxisPad(props: PropsWithChildren<AxisPadProps>): ReactElement {
         };
     }, []);
 
-    useEffect(() => {
+    React.useEffect(() => {
         setStatusBarOffset(StatusBar.currentHeight ?? 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [StatusBar.currentHeight]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         Animated.timing(padPositionAnimation.current, {
             toValue: {
                 x: visualSnapPadToTouchOffset.x,
