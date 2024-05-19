@@ -1,6 +1,6 @@
 # @fustaro/react-native-axis-pad
 
-Multitouch axis / game pad
+Multi-touch axis / game pad
 
 ## Installation
 
@@ -11,11 +11,19 @@ npm install @fustaro/react-native-axis-pad
 ## Usage
 
 ```js
-import { multiply } from '@fustaro/react-native-axis-pad';
+import { AxisPad } from '@fustaro/react-native-axis-pad';
 
-// ...
-
-const result = await multiply(3, 7);
+<AxisPad
+    id={"move"}
+    resetOnRelease={true}
+    stepSize={0}
+    size={250}
+    padBackgroundStyle={axisPadStyle}
+    controlStyle={axisControlStyle}
+    ignoreTouchDownInPadArea={false}
+    initialTouchType={"no-snap"}
+    stickStyle={styles.directionPadStickStyle}
+    onTouchEvent={onMovePadFeedback} />
 ```
 
 ## Contributing
