@@ -1,44 +1,27 @@
-import { View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { useMemo } from "react";
-import { AppScreen, Drawer } from "./Navigation";
+import "react";
+import { useState } from "react";
+import { StyleSheet, View, Button, StatusBar } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { AxisPadWithValueText } from "./components/AxisPadWithValueText";
-import { AxisPadStyles, PageStyles } from "./DefaultStyles";
+import { AxisPadStyles } from "./DefaultStyles";
 
 export default function App() {
-    // these are memo'd because Drawer.Navigator will complain about <AppScreen> not being a <Drawer.Screen> even though it is
-    const mainScreen = useMemo(
-        () =>
-            AppScreen({
-                name: "2 Pads",
-                headerTitle: "2 Pads",
-                screenComponent: MainScreen,
-            }),
-        []
-    );
-
-    const anotherScreen = useMemo(
-        () =>
-            AppScreen({
-                name: "More Pads",
-                headerTitle: "More Pads",
-                screenComponent: AnotherScreen,
-            }),
-        []
-    );
+    const [page, setPage] = useState<"2-pads" | "more-pads">("2-pads");
 
     return (
-        <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Test">
-                {[mainScreen, anotherScreen]}
-            </Drawer.Navigator>
-        </NavigationContainer>
+        <GestureHandlerRootView style={styles.pageContainer}>
+            <View style={styles.navContainer}>
+                <Button title="2 Pads" onPress={() => setPage("2-pads")} />
+                <Button title="More Pads" onPress={() => setPage("more-pads")} />
+            </View>
+            {page === "2-pads" ? <MainScreen /> : <AnotherScreen />}
+        </GestureHandlerRootView>
     );
 }
 
 function MainScreen() {
     return (
-        <View style={PageStyles.landscapePage}>
+        <View style={styles.padContainer}>
             <AxisPadWithValueText
                 id={"main-pad1"}
                 size={250}
@@ -63,7 +46,7 @@ function MainScreen() {
 
 function AnotherScreen() {
     return (
-        <View style={PageStyles.landscapePage}>
+        <View style={styles.padContainer}>
             <AxisPadWithValueText
                 id={"another-pad1"}
                 resetOnRelease={true}
@@ -122,3 +105,21 @@ function AnotherScreen() {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    pageContainer: {
+        paddingTop: StatusBar.currentHeight || 0,
+        flex: 1,
+    },
+    navContainer: {
+        flexDirection: "row",
+        padding: 20,
+        justifyContent: "space-evenly",
+    },
+    padContainer: {
+        flex: 1,
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+    },
+});

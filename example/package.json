@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "@fustaro/react-native-axis-pad": "^0.3.0",
-    "@react-navigation/drawer": "6.5.4",
-    "@react-navigation/native": "6.1.6",
-    "@react-navigation/native-stack": "6.9.5",
     "expo": "50",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",

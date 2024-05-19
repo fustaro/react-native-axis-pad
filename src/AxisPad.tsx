@@ -233,6 +233,32 @@ export function AxisPad(props: PropsWithChildren<AxisPadProps>): ReactElement {
         controlBoundRadius,
     ]);
 
+    const layout = () => {
+        padViewRef.current?.measure((_x, _y, width, height, pageX, pageY) => {
+            setPadLayoutData({
+                x: pageX,
+                y: pageY,
+                width: width,
+                height: height,
+            });
+        });
+    };
+
+    useEffect(() => {
+        // if the actual size of the pad doesn't change then onLayout isn't called, meaning
+        // offsets are wrong if screen orientation changes.
+        // it would be lovely if the gesture handler relative positions worked properly with multi-touch, but for now
+        // using absolute coords and page offset seems to work fine. Apart from the statusbar nonsense. oh well.
+        const subscription = Dimensions.addEventListener("change", () => {
+            setStatusBarOffset(StatusBar.currentHeight || 0);
+            layout();
+        });
+
+        return () => {
+            subscription?.remove();
+        };
+    }, []);
+
     useEffect(() => {
         setStatusBarOffset(StatusBar.currentHeight ?? 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -419,25 +445,6 @@ export function AxisPad(props: PropsWithChildren<AxisPadProps>): ReactElement {
         }
     };
 
-    const getPadLayoutData = () => {
-        padViewRef.current?.measure((_x, _y, width, height, pageX, pageY) => {
-            setPadLayoutData({
-                x: pageX,
-                y: pageY,
-                width: width,
-                height: height,
-            });
-        });
-    };
-
-    const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
-
-    // if the actual size of the pad doesn't change then onLayout isn't called, meaning
-    // offsets are wrong if screen orientation changes.
-    // it would be lovely if the gesture handler relative positions worked properly with multi-touch, but for now
-    // using absolute coords and page offset seems to work fine. Apart from the statusbar nonsense. oh well.
-    useEffect(getPadLayoutData, [windowWidth, windowHeight]);
-
     return (
         <PanGestureHandler
             id={props.id}
@@ -447,7 +454,7 @@ export function AxisPad(props: PropsWithChildren<AxisPadProps>): ReactElement {
         >
             <Animated.View
                 ref={padViewRef}
-                onLayout={getPadLayoutData}
+                onLayout={layout}
                 style={[
                     getPadBackgroundStyle(props, padWidth, padHeight),
                     {
