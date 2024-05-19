@@ -1,6 +1,6 @@
 {
   "name": "@fustaro/react-native-axis-pad",
-  "version": "0.2.1",
+  "version": "0.1.1",
   "description": "React Native multi-touch axis pad",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -115,11 +115,13 @@
       "tagName": "v${version}"
     },
     "npm": {
-      "publish": true
+      "publish": true,
+      "access": "public"
     },
     "github": {
       "release": true
     },
+    "increment": "minor",
     "plugins": {
       "@release-it/conventional-changelog": {
         "preset": "angular"
