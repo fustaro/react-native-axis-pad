@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import type { ComponentType, ReactElement } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -8,7 +8,7 @@ export const Stack = createNativeStackNavigator();
 interface AppScreenProps {
     name: string;
     headerTitle: string;
-    screenComponent: React.FC;
+    screenComponent: ComponentType<any>;
 }
 
 export function AppScreen({ name, headerTitle, screenComponent }: AppScreenProps): ReactElement {

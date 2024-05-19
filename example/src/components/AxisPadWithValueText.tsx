@@ -1,19 +1,18 @@
-import { useRef, useState } from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { AxisPad, AxisPadProps, AxisPadTouchEvent } from "@fustaro/react-native-axis-pad";
 import { padBackgroundColor, padBorderColor } from "../DefaultStyles";
 
-function pointDetailsText(touch: AxisPadTouchEvent) {
-    return `X: ${touch.ratio.x.toFixed(2)}, Y: ${touch.ratio.y.toFixed(2)}`;
+function pointDetailsText(x: number, y: number) {
+    return `X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}`;
 }
 
 export function AxisPadWithValueText(props: Omit<AxisPadProps, "onTouchEvent">) {
     const [active, setActive] = useState(false);
-
-    const textRef = useRef<TextInput>(null);
+    const [text, setText] = useState(pointDetailsText(0, 0));
 
     const onTouchEvent = (touch: AxisPadTouchEvent) => {
-        textRef.current?.setNativeProps({ text: pointDetailsText(touch) });
+        setText(pointDetailsText(touch.ratio.x, touch.ratio.y));
 
         if (touch.eventType === "start") {
             setActive(true);
@@ -31,7 +30,7 @@ export function AxisPadWithValueText(props: Omit<AxisPadProps, "onTouchEvent">) 
     return (
         <View style={wrapperStyle}>
             <View style={textWrapperStyle}>
-                <TextInput ref={textRef} />
+                <Text>{text}</Text>
             </View>
             <AxisPad {...props} onTouchEvent={onTouchEvent} />
         </View>

@@ -2158,10 +2158,10 @@
     find-up "^5.0.0"
     js-yaml "^4.1.0"
 
-"@fustaro/react-native-axis-pad@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@fustaro/react-native-axis-pad/-/react-native-axis-pad-0.2.0.tgz#28d316046fc73c4659e11384ef81bc6bbd0f5fce"
-  integrity sha512-9UN4Pw0/Kl7G+Rpsu38Y/qfCKNGeQAkysOW9d2U6kkkaMzvF4mfWRQLE/Gp2OXqFMAUAQODU0toWA+9Sa5csQA==
+"@fustaro/react-native-axis-pad@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@fustaro/react-native-axis-pad/-/react-native-axis-pad-0.3.0.tgz#c6efac94b03f857348a39a48700e9c04244974cd"
+  integrity sha512-a91Dzxf69ViYKomVEk5bqZuDrBTOZauCvWwbvuSlQxIfW9s8b+uY1lE8P3rBhYgf9isDIR0VlADsEnCVmWwONw==
   dependencies:
     "@testing-library/react-native" "^12.0.1"
 

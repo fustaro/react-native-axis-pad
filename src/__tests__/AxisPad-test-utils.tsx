@@ -2,7 +2,7 @@ import { render, within } from "@testing-library/react-native";
 import { AxisPad, AxisPadProps, AxisPadTouchEventType } from "../AxisPad";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import type { View } from "react-native";
-import React from "react";
+import React, { FunctionComponentElement } from "react";
 
 export interface Point {
     x: number;
@@ -42,8 +42,8 @@ export const onControlPositionChangeMock = jest.fn();
 export const onPadPositionChangeMock = jest.fn();
 
 export function renderAxisPad(props: Omit<AxisPadProps, "onTouchEvent">): {
-    root: React.FunctionComponentElement<typeof AxisPad>;
-    knob: React.FunctionComponentElement<View>;
+    root: FunctionComponentElement<typeof AxisPad>;
+    knob: FunctionComponentElement<View>;
 } {
     const unitTestProps: UnitTestAxisPadProps = {
         ...props,

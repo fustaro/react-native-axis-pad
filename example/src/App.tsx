@@ -10,8 +10,8 @@ export default function App() {
     const mainScreen = useMemo(
         () =>
             AppScreen({
-                name: "Test",
-                headerTitle: "2 dials",
+                name: "2 Pads",
+                headerTitle: "2 Pads",
                 screenComponent: MainScreen,
             }),
         []
@@ -20,8 +20,8 @@ export default function App() {
     const anotherScreen = useMemo(
         () =>
             AppScreen({
-                name: "Test 2",
-                headerTitle: "many dials",
+                name: "More Pads",
+                headerTitle: "More Pads",
                 screenComponent: AnotherScreen,
             }),
         []
