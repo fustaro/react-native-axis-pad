@@ -1,7 +1,7 @@
 {
   "name": "@fustaro/react-native-axis-pad",
-  "version": "0.2.0",
-  "description": "test",
+  "version": "0.2.1",
+  "description": "React Native multi-touch axis pad",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -47,7 +47,7 @@
     "multitouch"
   ],
   "repository": "https://github.com/fustaro/fustaro-react-native-axis-pad",
-  "author": "fustaro <the3dprintspace@gmail.com> (https://github.com/fustaro)",
+  "author": "Graham Watson (https://github.com/fustaro)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fustaro/fustaro-react-native-axis-pad/issues"
@@ -56,6 +56,7 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "private": false,
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.2.2",
