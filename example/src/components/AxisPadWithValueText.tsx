@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
-import { AxisPad, AxisPadProps, AxisPadTouchEvent } from "../../../src/AxisPad";
+import { AxisPad, AxisPadProps, AxisPadTouchEvent } from "@fustaro/react-native-axis-pad";
 import { padBackgroundColor, padBorderColor } from "../DefaultStyles";
 
 function pointDetailsText(touch: AxisPadTouchEvent) {
