@@ -46,13 +46,13 @@
     "axis pad",
     "multitouch"
   ],
-  "repository": "https://github.com/fustaro/fustaro-react-native-axis-pad",
+  "repository": "https://github.com/fustaro/react-native-axis-pad",
   "author": "Graham Watson (https://github.com/fustaro)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fustaro/fustaro-react-native-axis-pad/issues"
+    "url": "https://github.com/fustaro/react-native-axis-pad/issues"
   },
-  "homepage": "https://github.com/fustaro/fustaro-react-native-axis-pad#readme",
+  "homepage": "https://github.com/fustaro/react-native-axis-pad#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
