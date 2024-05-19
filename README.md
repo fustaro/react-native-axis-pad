@@ -33,18 +33,18 @@ import { AxisPad, AxisPadTouchEvent } from "@fustaro/react-native-axis-pad";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function App() {
-	const onTouchEvent = (event: AxisPadTouchEvent) => {
-		if(event.eventType === "start"){
-			// do something on event start
-			console.log("start x", event.ratio.x, "start y", event.ratio.y);
-		} else if(event.eventType === "end"){
-			// do something on event end
-			console.log("end x", event.ratio.x, "end y", event.ratio.y);
-		} else if(event.eventType === "pan") {
-			// do something while panning
-			console.log("pan x", event.ratio.x, "pan y", event.ratio.y);
-		}
-	}
+  const onTouchEvent = (event: AxisPadTouchEvent) => {
+    if(event.eventType === "start"){
+      // do something on event start
+      console.log("start x", event.ratio.x, "start y", event.ratio.y);
+    } else if(event.eventType === "end"){
+      // do something on event end
+      console.log("end x", event.ratio.x, "end y", event.ratio.y);
+    } else if(event.eventType === "pan") {
+      // do something while panning
+      console.log("pan x", event.ratio.x, "pan y", event.ratio.y);
+    }
+  }
 
   return (
     <SafeAreaView style={styles.pageContainer}>
