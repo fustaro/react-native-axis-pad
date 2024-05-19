@@ -2,6 +2,10 @@
 
 Multi-touch axis / game pad
 
+[Expo Snack](https://snack.expo.dev/@fustaro/fustaro-axis-pad-demo)
+
+![Demo Gif](fustaro-react-native-axis-pad-300.gif)
+
 ## Installation
 
 ```sh

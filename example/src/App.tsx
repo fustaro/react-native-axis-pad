@@ -1,6 +1,5 @@
-import "react";
 import { useState } from "react";
-import { StyleSheet, View, Button, StatusBar } from "react-native";
+import { StyleSheet, View, Button, StatusBar, SafeAreaView } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { AxisPadWithValueText } from "./components/AxisPadWithValueText";
 import { AxisPadStyles } from "./DefaultStyles";
@@ -9,13 +8,15 @@ export default function App() {
     const [page, setPage] = useState<"2-pads" | "more-pads">("2-pads");
 
     return (
-        <GestureHandlerRootView style={styles.pageContainer}>
-            <View style={styles.navContainer}>
-                <Button title="2 Pads" onPress={() => setPage("2-pads")} />
-                <Button title="More Pads" onPress={() => setPage("more-pads")} />
-            </View>
-            {page === "2-pads" ? <MainScreen /> : <AnotherScreen />}
-        </GestureHandlerRootView>
+        <SafeAreaView style={styles.pageContainer}>
+            <GestureHandlerRootView style={{ flex: 1 }}>
+                <View style={styles.navContainer}>
+                    <Button title="2 Pads" onPress={() => setPage("2-pads")} />
+                    <Button title="More Pads" onPress={() => setPage("more-pads")} />
+                </View>
+                {page === "2-pads" ? <MainScreen /> : <AnotherScreen />}
+            </GestureHandlerRootView>
+        </SafeAreaView>
     );
 }
 
